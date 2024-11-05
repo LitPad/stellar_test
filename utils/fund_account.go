@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -20,8 +19,6 @@ func FundAccount(publicKey string) string{
 	if err != nil{
 		log.Fatal(err)
 	}
-
-	fmt.Println(string(body))
 
 	return string(body)
 }
