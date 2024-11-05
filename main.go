@@ -1,10 +1,6 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"os"
-
 	"github.com/litpad/stellar-wallet/utils"
 )
 
@@ -24,20 +20,42 @@ import (
 // 	utils.AccountBalance(address)
 // }
 
+// func main(){
+// 	fmt.Println("Enter address: ")
+
+// 	scanner := bufio.NewScanner(os.Stdin)
+
+// 	var address string
+
+// 	if scanner.Scan(){
+// 		address = scanner.Text()
+// 	}
+
+// 	if err := scanner.Err(); err != nil {
+// 		fmt.Fprintln(os.Stderr, "Error reading input:", err)
+// 	}
+
+// 	utils.AccountBalance(address)
+// }
+
+// func main(){
+// 	fmt.Println("Enter address: ")
+
+// 	scanner := bufio.NewScanner(os.Stdin)
+
+// 	var address string
+
+// 	if scanner.Scan(){
+// 		address = scanner.Text()
+// 	}
+
+// 	if err := scanner.Err(); err != nil {
+// 		fmt.Fprintln(os.Stderr, "Error reading input:", err)
+// 	}
+
+// 	utils.Pay("SCBG7YEFMCURTCEHDERQCRKLVQCSYZ3BLXUCP6W56PSOJ4QA36RRI36T", address, "400", "test payment")
+// }
+
 func main(){
-	fmt.Println("Enter address: ")
-
-	scanner := bufio.NewScanner(os.Stdin)
-
-	var address string
-
-	if scanner.Scan(){
-		address = scanner.Text()
-	}
-
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintln(os.Stderr, "Error reading input:", err)
-	}
-
-	utils.AccountBalance(address)
+	utils.Watch("SCBG7YEFMCURTCEHDERQCRKLVQCSYZ3BLXUCP6W56PSOJ4QA36RRI36T")
 }

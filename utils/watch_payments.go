@@ -23,7 +23,7 @@ func Watch(publicKey string){
 	pribtHander := func (op operations.Operation)  {
 		fmt.Print("Incoming payment: ")
 		fmt.Println(op)
-		// store in the database
+		// store in the db
 		fmt.Print("----")
 	}
 

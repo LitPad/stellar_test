@@ -10,10 +10,10 @@ import (
 	"github.com/stellar/go/txnbuild"
 )
 
-func Pay(sendersPublicKey, receiversPrivateKey, amount, purpose string){
+func Pay(sendersPrivateKey, receiversPublicKey, amount, purpose string){
 	client := horizonclient.DefaultTestNetClient // Todo: change to public network
 
-	destAccountRequest := horizonclient.AccountRequest{AccountID: receiversPrivateKey}
+	destAccountRequest := horizonclient.AccountRequest{AccountID: receiversPublicKey}
 
 	destAccount, err := client.AccountDetail(destAccountRequest)
 
@@ -24,7 +24,7 @@ func Pay(sendersPublicKey, receiversPrivateKey, amount, purpose string){
 	fmt.Println("Destination Account: ", destAccount)
 
 	// Load source account
-	sourceKP := keypair.MustParseFull(sendersPublicKey)
+	sourceKP := keypair.MustParseFull(sendersPrivateKey)
 	sourceAccountRequest := horizonclient.AccountRequest{AccountID: sourceKP.Address()}
 	sourceAccount, err := client.AccountDetail(sourceAccountRequest)
 
@@ -42,7 +42,7 @@ func Pay(sendersPublicKey, receiversPrivateKey, amount, purpose string){
 			},
 			Operations: []txnbuild.Operation{
 				&txnbuild.Payment{
-					Destination: receiversPrivateKey,
+					Destination: receiversPublicKey,
 					Amount: amount,
 					Asset: txnbuild.NativeAsset{},
 				},
